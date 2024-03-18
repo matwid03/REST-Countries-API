@@ -2,6 +2,7 @@ const createFlagEl = (country) => {
   const imgContainer = document.createElement('div');
   const imgEl = document.createElement('img');
   imgEl.src = country.flagImage;
+  imgEl.alt = `${country.name} flag`;
 
   imgContainer.appendChild(imgEl);
   return imgContainer;
@@ -23,14 +24,21 @@ const createInfoEl = (labelName, value) => {
 const createCountryEl = (country) => {
   const countryEl = document.createElement('li');
 
-  const countryName = document.createElement('span');
+  countryEl.appendChild(createFlagEl(country));
+
+  const infoContainer = document.createElement('div');
+  infoContainer.classList.add('info-container');
+  const countryName = document.createElement('strong');
+  countryName.classList.add('country-name');
   countryName.innerText = country.name;
 
-  countryEl.append(createFlagEl(country),
+  infoContainer.append(
     countryName,
     createInfoEl("Population: ", country.population),
     createInfoEl("Region: ", country.region),
     createInfoEl("Capital: ", country.capital));
+
+  countryEl.appendChild(infoContainer);
 
   return countryEl;
 };

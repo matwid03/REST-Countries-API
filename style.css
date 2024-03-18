@@ -1,0 +1,92 @@
+:root {
+	/* --color-dark-blue: hsl(209, 23%, 22%);
+	--color-dark-blue: hsl(207, 26%, 17%); */
+	--color-text: hsl(200, 15%, 8%);
+	--color-input: hsl(0, 0%, 52%);
+	--color-backgroud: hsl(0, 0%, 98%);
+	--color-white: hsl(0, 0%, 100%);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+header,
+main {
+	padding: 20px 5%;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header h1 {
+	font-weight: 900;
+}
+
+header button {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+header .fa {
+	font-size: 18px;
+	margin-right: 6px;
+}
+
+main {
+	background: var(--color-backgroud);
+}
+
+ul {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	list-style-type: none;
+	gap: 70px;
+}
+
+li {
+	background: var(--color-white);
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 3px 5px -3px rgba(66, 68, 90, 1);
+}
+
+li img {
+	aspect-ratio: 160 / 98;
+	width: 100%;
+}
+
+.info-container {
+	padding: 30px 20px;
+}
+
+.country-name {
+	display: block;
+	font-size: 18px;
+	margin-bottom: 10px;
+	font-weight: 800;
+}
+
+@media screen and (max-width: 900px) {
+	ul {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 600px) {
+	ul {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

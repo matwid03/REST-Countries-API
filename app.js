@@ -10,7 +10,7 @@ const catchApi = async () => {
       return {
         name: country.name,
         capital: country.capital || 'none',
-        population: country.population,
+        population: country.population.toLocaleString('en-us', 'decimal'),
         flagImage: country.flags.png,
         region: country.region
       };
@@ -23,4 +23,4 @@ const catchApi = async () => {
   }
 };
 
-catchApi().then(() => { renderCountriesList(countries); })
+catchApi().then(() => { renderCountriesList(countries); });

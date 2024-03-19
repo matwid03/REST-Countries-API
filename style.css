@@ -45,6 +45,38 @@ header .fa {
 	margin-right: 6px;
 }
 
+.filters {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.search-box {
+	display: flex;
+	align-items: center;
+	background: var(--color-white);
+	width: 30%;
+	font-size: 18px;
+	padding: 15px 40px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	color: var(--color-input);
+}
+
+.search-box input {
+	margin-left: 20px;
+	border: none;
+	width: 100%;
+	outline: none;
+}
+
+.filters select {
+	width: 10%;
+	padding: 15px 10px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+}
+
 main {
 	background: var(--color-backgroud);
 }
@@ -61,6 +93,11 @@ li {
 	border-radius: 5px;
 	overflow: hidden;
 	box-shadow: 0px 3px 5px -3px rgba(66, 68, 90, 1);
+}
+
+li a {
+	text-decoration: none;
+	color: var(--color-text);
 }
 
 li img {

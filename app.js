@@ -1,26 +1,9 @@
-import { renderCountriesList } from "./dom-utils.js";
+import { renderViewDashboard } from "./view-dashboard.js";
 
-let countries;
-const catchApi = async () => {
-  try {
-    const resp = await fetch('data.json');
-    const data = await resp.json();
-
-    countries = data.map(country => {
-      return {
-        name: country.name,
-        capital: country.capital || 'none',
-        population: country.population.toLocaleString('en-us', 'decimal'),
-        flagImage: country.flags.png,
-        region: country.region
-      };
-    });
-
-    return countries;
-  } catch (error) {
-    console.error('Błąd pobierania danych:', error);
-    throw error;
-  }
-};
-
-catchApi().then(() => { renderCountriesList(countries); });
+if (window.location.search.includes('?country=')) {
+  let country = window.location.search;
+  console.log(country);
+  renderCountriesList(country);
+} else {
+  renderViewDashboard();
+}

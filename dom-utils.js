@@ -24,6 +24,9 @@ const createInfoEl = (labelName, value) => {
 const createCountryEl = (country) => {
   const countryEl = document.createElement('li');
 
+  const anchorEl = document.createElement('a');
+  anchorEl.href = `?country=${country.name}`;
+
   countryEl.appendChild(createFlagEl(country));
 
   const infoContainer = document.createElement('div');
@@ -38,7 +41,8 @@ const createCountryEl = (country) => {
     createInfoEl("Region: ", country.region),
     createInfoEl("Capital: ", country.capital));
 
-  countryEl.appendChild(infoContainer);
+  anchorEl.appendChild(infoContainer);
+  countryEl.appendChild(anchorEl);
 
   return countryEl;
 };
@@ -54,5 +58,11 @@ const createListElement = (countries) => {
 
 export const renderCountriesList = (countries) => {
   const rootEl = document.querySelector('#root');
+  const children = root.children;
+
+  for (let i = 1; i < children.length; i++) {
+    rootEl.removeChild(children[i]);
+  }
+
   rootEl.appendChild(createListElement(countries));
 };

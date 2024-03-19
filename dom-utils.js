@@ -77,6 +77,17 @@ const createDetailElement = (country) => {
   return detailConatinerEl;
 };
 
+const createBackBtn = () => {
+  const backEl = document.createElement('a');
+  backEl.innerText = 'Go back';
+  backEl.classList.add('go-back-btn');
+
+  backEl.addEventListener('click', () => {
+    window.location.search = '/';
+  });
+  return backEl;
+};
+
 export const renderCountriesList = (countries) => {
   const rootEl = document.querySelector('#root');
   const children = root.children;
@@ -84,6 +95,9 @@ export const renderCountriesList = (countries) => {
   for (let i = 1; i < children.length; i++) {
     rootEl.removeChild(children[i]);
   }
+
+  const filteredCountries = countries.filter(country => country.code === undefined);
+  console.log(filteredCountries);
 
   rootEl.appendChild(createListElement(countries));
 };
@@ -98,5 +112,6 @@ export const renderCountryDetails = (country) => {
     rootEl.removeChild(children[i]);
   }
 
-  rootEl.appendChild(createDetailElement(country));
+
+  rootEl.append(createBackBtn(), createDetailElement(country));
 };

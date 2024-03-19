@@ -1,9 +1,9 @@
 import { renderViewDashboard } from "./view-dashboard.js";
+import { renderDetail } from "./view-detail.js";
 
 if (window.location.search.includes('?country=')) {
-  let country = window.location.search;
-  console.log(country);
-  renderCountriesList(country);
+  document.querySelector('.filters').classList.add('hidden');
+  renderDetail();
 } else {
   renderViewDashboard();
 }

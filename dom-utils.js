@@ -7,7 +7,6 @@ const createFlagEl = (country) => {
   imgContainer.appendChild(imgEl);
   return imgContainer;
 };
-
 const createInfoEl = (labelName, value) => {
   const infoEl = document.createElement('div');
 
@@ -25,7 +24,7 @@ const createCountryEl = (country) => {
   const countryEl = document.createElement('li');
 
   const anchorEl = document.createElement('a');
-  anchorEl.href = `?country=${country.name}`;
+  anchorEl.href = `?country=${country.code}`;
 
   countryEl.appendChild(createFlagEl(country));
 
@@ -56,6 +55,28 @@ const createListElement = (countries) => {
   return listEl;
 };
 
+const createDetailElement = (country) => {
+  const detailConatinerEl = document.createElement('div');
+
+  const flagImgEl = createFlagEl(country);
+  const detailNameEl = document.createElement('strong');
+  detailNameEl.innerText = country.name;
+
+  detailConatinerEl.append(flagImgEl, detailNameEl);
+
+  detailConatinerEl.append(
+    createInfoEl('Native name: ', country.nativeName),
+    createInfoEl('Population: ', country.population),
+    createInfoEl('Region: ', country.region),
+    createInfoEl('Sub region: ', country.subregion),
+    createInfoEl('Capital: ', country.capital),
+    createInfoEl('Top level domain: ', country.tld),
+    createInfoEl('Currencies: ', country.currencies),
+    createInfoEl('Languages: ', country.languages),
+  );
+  return detailConatinerEl;
+};
+
 export const renderCountriesList = (countries) => {
   const rootEl = document.querySelector('#root');
   const children = root.children;
@@ -65,4 +86,17 @@ export const renderCountriesList = (countries) => {
   }
 
   rootEl.appendChild(createListElement(countries));
+};
+
+
+
+export const renderCountryDetails = (country) => {
+  const rootEl = document.querySelector('#root');
+  const children = root.children;
+
+  for (let i = 1; i < children.length; i++) {
+    rootEl.removeChild(children[i]);
+  }
+
+  rootEl.appendChild(createDetailElement(country));
 };

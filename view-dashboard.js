@@ -15,7 +15,8 @@ export const renderViewDashboard = () => {
           capital: country.capital || 'none',
           population: country.population.toLocaleString('en-us', 'decimal'),
           flagImage: country.flags.png,
-          region: country.region
+          region: country.region,
+          code: country.cioc
         };
       });
 

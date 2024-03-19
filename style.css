@@ -50,6 +50,10 @@ header .fa {
 	justify-content: space-between;
 	align-items: center;
 }
+
+.filters.hidden {
+	display: none;
+}
 .search-box {
 	display: flex;
 	align-items: center;

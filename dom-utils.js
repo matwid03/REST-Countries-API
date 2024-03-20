@@ -24,6 +24,7 @@ const createCountryEl = (country) => {
   const countryEl = document.createElement('li');
   const anchorEl = document.createElement('a');
   anchorEl.href = `?country=${country.code}`;
+  console.log(country.code);
   countryEl.appendChild(createFlagEl(country));
 
   const infoContainer = document.createElement('div');
@@ -139,7 +140,7 @@ export const renderCountryDetails = (country) => {
   }
 
 
-  rootEl.append(createDetailBtn('Go back', 'REST-Countries-API/'), createDetailElement(country));
+  rootEl.append(createDetailBtn('Go back', 'https://matwid03.github.io/REST-Countries-API/'), createDetailElement(country));
 };
 
 document.querySelector('#darkMode').addEventListener('click', () => {

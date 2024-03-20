@@ -57,35 +57,66 @@ const createListElement = (countries) => {
 
 const createDetailElement = (country) => {
   const detailConatinerEl = document.createElement('div');
-
+  detailConatinerEl.classList.add('detail-container');
+  const flagContainer = document.createElement('div');
   const flagImgEl = createFlagEl(country);
+  const infoContainer = document.createElement('div');
+  infoContainer.classList.add('info-container');
   const detailNameEl = document.createElement('strong');
+  detailNameEl.classList.add('detail-name');
   detailNameEl.innerText = country.name;
 
-  detailConatinerEl.append(flagImgEl, detailNameEl);
+  flagContainer.appendChild(flagImgEl);
+  infoContainer.appendChild(detailNameEl);
 
-  detailConatinerEl.append(
+  const leftDiv = document.createElement('div');
+  leftDiv.append(
     createInfoEl('Native name: ', country.nativeName),
     createInfoEl('Population: ', country.population),
     createInfoEl('Region: ', country.region),
     createInfoEl('Sub region: ', country.subregion),
     createInfoEl('Capital: ', country.capital),
+
+  );
+
+  const rightDiv = document.createElement('div');
+  rightDiv.append(
     createInfoEl('Top level domain: ', country.tld),
     createInfoEl('Currencies: ', country.currencies),
     createInfoEl('Languages: ', country.languages),
   );
+
+  infoContainer.append(leftDiv, rightDiv);
+  if (country.borders || country.borders.length > 0) {
+    infoContainer.appendChild(borderCountriesContainer(country));
+  }
+  detailConatinerEl.append(flagContainer, infoContainer);
+
   return detailConatinerEl;
 };
 
-const createBackBtn = () => {
+const createDetailBtn = (text, link) => {
   const backEl = document.createElement('a');
-  backEl.innerText = 'Go back';
+  backEl.innerText = text;
   backEl.classList.add('go-back-btn');
+  backEl.href = link;
 
-  backEl.addEventListener('click', () => {
-    window.location.search = '/';
-  });
   return backEl;
+};
+
+const borderCountriesContainer = (country) => {
+  const countriesContainer = document.createElement('div');
+  countriesContainer.classList.add('border-div');
+  const labelEl = document.createElement('strong');
+  labelEl.innerText = "Border Countries: ";
+
+  countriesContainer.appendChild(labelEl);
+
+  country.borders.forEach(border => {
+    countriesContainer.appendChild(createDetailBtn(border, `/?country=${border}`));
+  });
+
+  return countriesContainer;
 };
 
 export const renderCountriesList = (countries) => {
@@ -95,9 +126,6 @@ export const renderCountriesList = (countries) => {
   for (let i = 1; i < children.length; i++) {
     rootEl.removeChild(children[i]);
   }
-
-  const filteredCountries = countries.filter(country => country.code === undefined);
-  console.log(filteredCountries);
 
   rootEl.appendChild(createListElement(countries));
 };
@@ -113,5 +141,5 @@ export const renderCountryDetails = (country) => {
   }
 
 
-  rootEl.append(createBackBtn(), createDetailElement(country));
+  rootEl.append(createDetailBtn('Go back', '/'), createDetailElement(country));
 };

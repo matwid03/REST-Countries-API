@@ -21,7 +21,6 @@ export const renderDetail = () => {
 
       const countryData = data[0];
 
-      console.log(countryData);
       const country = {
         name: countryData.name.common,
         capital: countryData.capital || 'none',
@@ -34,6 +33,7 @@ export const renderDetail = () => {
         currencies: Object.values(countryData.currencies).map(currency => currency.name).join(', '),
         languages: Object.values(countryData.languages).join(', '),
         tld: countryData.tld[0],
+        borders: countryData.borders,
       };
 
       renderCountryDetails(country);

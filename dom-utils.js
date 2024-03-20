@@ -139,7 +139,7 @@ export const renderCountryDetails = (country) => {
   }
 
 
-  rootEl.append(createDetailBtn('Go back', '/'), createDetailElement(country));
+  rootEl.append(createDetailBtn('Go back', 'REST-Countries-API/'), createDetailElement(country));
 };
 
 document.querySelector('#darkMode').addEventListener('click', () => {

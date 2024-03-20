@@ -22,10 +22,8 @@ const createInfoEl = (labelName, value) => {
 
 const createCountryEl = (country) => {
   const countryEl = document.createElement('li');
-
   const anchorEl = document.createElement('a');
   anchorEl.href = `?country=${country.code}`;
-
   countryEl.appendChild(createFlagEl(country));
 
   const infoContainer = document.createElement('div');
@@ -87,7 +85,7 @@ const createDetailElement = (country) => {
   );
 
   infoContainer.append(leftDiv, rightDiv);
-  if (country.borders || country.borders.length > 0) {
+  if (country.borders) {
     infoContainer.appendChild(borderCountriesContainer(country));
   }
   detailConatinerEl.append(flagContainer, infoContainer);

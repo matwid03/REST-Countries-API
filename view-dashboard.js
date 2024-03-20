@@ -16,7 +16,7 @@ export const renderViewDashboard = () => {
           population: country.population.toLocaleString('en-us', 'decimal'),
           flagImage: country.flags.png,
           region: country.region,
-          code: country.cioc
+          code: country.alpha3Code,
         };
       });
 

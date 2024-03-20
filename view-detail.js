@@ -9,6 +9,7 @@ export const renderDetail = () => {
   }
   const API_URL_DETAIL = `https://restcountries.com/v3.1/alpha/${countryCode}`;
 
+
   const catchApi = async () => {
     try {
       const resp = await fetch(API_URL_DETAIL);
@@ -30,7 +31,7 @@ export const renderDetail = () => {
         flagImage: countryData.flags.png,
         region: countryData.region,
         subregion: countryData.subregion,
-        code: countryData.cioc,
+        code: countryData.cca3,
         currencies: Object.values(countryData.currencies).map(currency => currency.name).join(', '),
         languages: Object.values(countryData.languages).join(', '),
         tld: countryData.tld[0],
@@ -50,4 +51,5 @@ export const renderDetail = () => {
   const goBackToDashboard = () => {
     window.location.href = '/';
   };
+
 };

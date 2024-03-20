@@ -5,6 +5,7 @@ export const renderDetail = () => {
   const countryCode = searchParams.get('country');
   if (!countryCode) {
     goBackToDashboard();
+    return;
   }
   const API_URL_DETAIL = `https://restcountries.com/v3.1/alpha/${countryCode}`;
 

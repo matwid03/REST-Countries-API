@@ -61,7 +61,7 @@ const createDetailElement = (country) => {
   const flagContainer = document.createElement('div');
   const flagImgEl = createFlagEl(country);
   const infoContainer = document.createElement('div');
-  infoContainer.classList.add('info-container');
+  infoContainer.classList.add('info-container-detail');
   const detailNameEl = document.createElement('strong');
   detailNameEl.classList.add('detail-name');
   detailNameEl.innerText = country.name;
@@ -143,3 +143,19 @@ export const renderCountryDetails = (country) => {
 
   rootEl.append(createDetailBtn('Go back', '/'), createDetailElement(country));
 };
+
+document.querySelector('#darkMode').addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+
+  if (localStorage.getItem('theme') == 'light') {
+    localStorage.setItem('theme', 'dark');
+  } else { localStorage.setItem('theme', 'light'); }
+});
+
+if (localStorage.getItem('theme') == 'light') {
+  document.body.classList.remove('dark-theme');
+} else if (localStorage.getItem('theme') == 'dark') {
+  document.body.classList.add('dark-theme');
+} else {
+  localStorage.setItem('theme', 'light');
+}

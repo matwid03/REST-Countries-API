@@ -25,7 +25,6 @@ const createCountryEl = (country) => {
   const anchorEl = document.createElement('a');
   anchorEl.href = `?country=${country.code}`;
   countryEl.appendChild(createFlagEl(country));
-  console.log('aaa');
 
   const infoContainer = document.createElement('div');
   infoContainer.classList.add('info-container');

@@ -138,8 +138,8 @@ export const renderCountryDetails = (country) => {
     rootEl.removeChild(children[i]);
   }
 
-
-  rootEl.append(createDetailBtn('Go back', 'https://matwid03.github.io/REST-Countries-API/'), createDetailElement(country));
+  const baseURL = window.location.origin;
+  rootEl.append(createDetailBtn('Go back', `${baseURL}/index.html`), createDetailElement(country));
 };
 
 document.querySelector('#darkMode').addEventListener('click', () => {

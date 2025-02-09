@@ -87,6 +87,13 @@ header .fa {
 	background: transparent;
 }
 
+.search-box input:focus {
+	padding: 5px;
+}
+.search-box:hover {
+	border: 1px solid gray;
+}
+
 .filters select {
 	min-width: 150px;
 	width: 10%;
@@ -113,6 +120,12 @@ li {
 	border-radius: 5px;
 	overflow: hidden;
 	box-shadow: 0px 3px 5px -3px rgba(66, 68, 90, 1);
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+li:hover {
+	transform: scale(105%);
 }
 
 li a {
@@ -147,8 +160,11 @@ li img {
 	padding: 6px 20px;
 	border-radius: 5px;
 	box-shadow: 0px 3px 5px -3px rgba(66, 68, 90, 1);
+	cursor: pointer;
 }
-
+.go-back-btn:hover {
+	background-color: gray;
+}
 .detail-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

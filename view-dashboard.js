@@ -32,6 +32,9 @@ export const renderViewDashboard = () => {
 
   const filterDataAndRender = () => {
     const filteredCountries = countries.filter(country => {
+      if (region === 'All') {
+        return true;
+      }
       return (country.name.toLowerCase().includes(query) && (!region || country.region === region));
     });
     renderCountriesList(filteredCountries);

@@ -9,4 +9,4 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 ## Welcome! 👋
 
 ## Link
-https://matwid03.github.io/REST-Countries-API/
+https://countriess-apii.netlify.app
